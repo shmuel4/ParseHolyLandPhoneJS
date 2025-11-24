@@ -3,7 +3,7 @@
   "description": "Parse Holy land (Israel/Palestine) phone numbers",
   "main": "src/ParseHolyLandPhone.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -14,5 +14,10 @@
   "bugs": {
     "url": "https://github.com/MordiSacks/ParseHolyLandPhoneJS/issues"
   },
-  "homepage": "https://github.com/MordiSacks/ParseHolyLandPhoneJS#readme"
+  "homepage": "https://github.com/MordiSacks/ParseHolyLandPhoneJS#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.28.5",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0"
+  }
 }

@@ -5,8 +5,13 @@
 export default class ParseHolyLandPhone {
 
     constructor(phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = ParseHolyLandPhone.normalize(phoneNumber);
         this.fromInternational();
+    }
+
+    static normalize(phone) {
+        if (!phone) phone = '';
+        return phone.replace(/\D/g, '').replace(/^(972)(\d{8,9})$/, '0$2');
     }
 
     static create(phoneNumber) {
@@ -101,7 +106,8 @@ export default class ParseHolyLandPhone {
      * @return boolean
      */
     isKosher() {
-        return this.phoneNumber.match(/^0([23489]80|5041|5271|5276|5484|5485|5331|5341|5832|5567)\d{5}$/) !== null;
+        if (!this.isValid()) return false; // if nubmer is not valid - always return false
+        return this.phoneNumber.match(/^0([23489]80|5041|5271|5276|5484|5485|5331|5341|5832|5567|55410|55400|55401|55402|55760|5532|5552)\d+$/) !== null;
     }
 
     /**
@@ -177,5 +183,9 @@ export default class ParseHolyLandPhone {
 
     isNotSmsable() {
         return !this.isSmsable();
+    }
+
+    isNotSpecial() {
+        return !this.isSpecial();
     }
 }
